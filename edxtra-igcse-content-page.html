@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edxtra - IGCSE Biology</title>
+    <style>
+        /* Root variables imported from your style */
+        :root {
+            /* Dark Theme */
+            --dark-bg: #0a0a0a;
+            --dark-section-alt: #0f0f1a;
+            --dark-card: #121212;
+            --dark-accent: #7C4DFF;
+            --dark-accent-secondary: #536DFE;
+            --dark-accent-tertiary: #03DAC6;
+            --dark-text: #ffffff;
+            --dark-text-muted: #b0b0b0;
+            --dark-border: #333333;
+            --dark-input: #1e1e1e;
+            --dark-hover: #1e1e1e;
+            --dark-section-divider: #171724;
+            
+            /* Light Theme */
+            --light-bg: #f8f9fa;
+            --light-section-alt: #eef2f7;
+            --light-card: #ffffff;
+            --light-accent: #5D3FD3;
+            --light-accent-secondary: #4361EE;
+            --light-accent-tertiary: #00bfa5;
+            --light-text: #111827;
+            --light-text-muted: #4b5563;
+            --light-border: #e5e7eb;
+            --light-input: #f3f4f6;
+            --light-hover: #f3f4f6;
+            --light-section-divider: #e5e9f0;
+            
+            /* Common */
+            --gradient-primary: linear-gradient(135deg, #7C4DFF, #536DFE);
+            --gradient-secondary: linear-gradient(135deg, #536DFE, #4285F4);
+            --gradient-tertiary: linear-gradient(135deg, #03DAC6, #00B0FF);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            --transition: all 0.3s ease;
+            --container-width: 1200px;
+        }
+
+        /* Applied Theme Variables */
+        :root {
+            --bg: var(--light-bg);
+            --section-alt: var(--light-section-alt);
+            --card: var(--light-card);
+            --accent: var(--light-accent);
+            --accent-secondary: var(--light-accent-secondary);
+            --accent-tertiary: var(--light-accent-tertiary);
+            --text: var(--light-text);
+            --text-muted: var(--light-text-muted);
+            --border: var(--light-border);
+            --input: var(--light-input);
+            --hover: var(--light-hover);
+            --section-divider: var(--light-section-divider);
+        }
+
+        /* Dark Theme Class */
+        .dark-theme {
+            --bg: var(--dark-bg);
+            --section-alt: var(--dark-section-alt);
+            --card: var(--dark-card);
+            --accent: var(--dark-accent);
+            --accent-secondary: var(--dark-accent-secondary);
+            --accent-tertiary: var(--dark-accent-tertiary);
+            --text: var(--dark-text);
+            --text-muted: var(--dark-text-muted);
+            --border: var(--dark-border);
+            --input: var(--dark-input);
+            --hover: var(--dark-hover);
+            --section-divider: var(--dark-section-divider);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-sm);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Chapter Card */
+        .chapter-card {
+            background-color: var(--card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+
+        .chapter-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-secondary);
+            border-radius: var(--radius-sm);
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .content-card {
+            background-color: var(--card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .content-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 0.75rem;
+        }
+
+        .card-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Image with caption */
+        .image-container {
+            margin: 2rem 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            background-color: var(--section-alt);
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+            border-bottom-left-radius: var(--radius-md);
+            border-bottom-right-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            border-top: none;
+        }
+
+        /* Callout boxes */
+        .callout {
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .callout::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .callout-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .callout-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            flex-shrink: 0;
+        }
+
+        .callout-info {
+            background-color: rgba(66, 133, 244, 0.1);
+            border: 1px solid rgba(66, 133, 244, 0.3);
+        }
+        
+        .callout-info::before {
+            background-color: var(--accent-secondary);
+        }
+
+        .callout-info .callout-icon {
+            background-color: rgba(66, 133, 244, 0.2);
+            color: var(--accent-secondary);
+        }
+
+        .callout-warning {
+            background-color: rgba(255, 152, 0, 0.1);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+        
+        .callout-warning::before {
+            background-color: #FF9800;
+        }
+
+        .callout-warning .callout-icon {
+            background-color: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+        }
+
+        .callout-important {
+            background-color: rgba(124, 77, 255, 0.1);
+            border: 1px solid rgba(124, 77, 255, 0.3);
+        }
+        
+        .callout-important::before {
+            background-color: var(--accent);
+        }
+
+        .callout-important .callout-icon {
+            background-color: rgba(124, 77, 255, 0.2);
+            color: var(--accent);
+        }
+
+        /* Theme toggler */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background-color: var(--section-alt);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--hover);
+        }
+
+        /* Interactive elements */
+        .flashcard-container {
+            margin: 2rem 0;
+        }
+
+        .flashcard {
+            background-color: var(--card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .flashcard:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .flashcard-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flashcard-answer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .flashcard.active .flashcard-answer {
+            display: block;
+        }
+
+        /* Quiz section */
+        .quiz-container {
+            background-color: var(--card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .quiz-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-secondary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            background-color: var(--section-alt);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background-color: var(--hover);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--accent);
+            background-color: rgba(124, 77, 255, 0.1);
+        }
+
+        .option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: var(--radius-full);
+            background-color: var(--card);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .quiz-option.selected .option-marker {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .prev-button {
+            background-color: var(--section-alt);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .prev-button:hover {
+            background-color: var(--hover);
+        }
+
+        .next-button {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .next-button:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-collapse: collapse;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        thead {
+            background-color: var(--section-alt);
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--section-alt);
+        }
+
+        /* Progress bar */
+        .progress-container {
+            position: sticky;
+            bottom: 1.5rem;
+            left: 0;
+            right: 0;
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card);
+            border-radius: var(--radius-full);
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 10;
+            border: 1px solid var(--border);
+        }
+
+        .progress-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--section-alt);
+            border-radius: var(--radius-full);
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 65%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+        }
+
+        .progress-percentage {
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0.5rem;
+            }
+            
+            .nav-items {
+                width: 100%;
+                justify-content: space-around;
+                padding: 0.5rem 0;
+                overflow-x: auto;
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .chapter-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .content-card {
+                padding: 1rem;
+            }
+            
+            .quiz-option {
+                padding: 0.75rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .progress-container {
+                padding: 0.75rem 1rem;
+                flex-wrap: wrap;
+            }
+            
+            .progress-bar {
+                order: 3;
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Mobile menu */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 640px) {
+            .nav-items {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .nav-items.mobile-active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--card);
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+                border-bottom: 1px solid var(--border);
+            }
+        }
+
+        /* Buttons and interactive elements */
+        button {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .footer-bottom {
+            max-width: var(--container-width);
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media screen and (max-width: 640px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Additional components */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag-biology {
+            background-color: rgba(3, 218, 198, 0.15);
+            color: var(--accent-tertiary);
+            border: 1px solid rgba(3, 218, 198, 0.3);
+        }
+
+        .tag-essential {
+            background-color: rgba(124, 77, 255, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(124, 77, 255, 0.3);
+        }
+
+        .tag-exam {
+            background-color: rgba(83, 109, 254, 0.15);
+            color: var(--accent-secondary);
+            border: 1px solid rgba(83, 109, 254, 0.3);
+        }
+
+        /* Bookmark button */
+        .bookmark-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            background-color: var(--section-alt);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .bookmark-button:hover {
+            background-color: var(--hover);
+        }
+
+        /* Chapter navigation */
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .chapter-nav-item {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            background-color: var(--section-alt);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chapter-nav-item:hover {
+            background-color: var(--hover);
+        }
+
+        .chapter-nav-item.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            background-color: var(--section-alt);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-button:hover {
+            background-color: var(--hover);
+        }
+
+        .action-button-primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+        }
+
+        .action-button-primary:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>ed<strong>xtra</strong></span>
+            </div>
+            <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="nav-items">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link active">IGCSE</a>
+                <a href="#" class="nav-link">A Levels</a>
+                <a href="#" class="nav-link">Resources</a>
+               <a href="#" class="nav-link">Community</a>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="theme-icon">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Chapter Navigation -->
+        <div class="chapter-nav">
+            <div class="chapter-nav-item">All Chapters</div>
+            <div class="chapter-nav-item">Cell Structure</div>
+            <div class="chapter-nav-item active">Transport in Plants</div>
+            <div class="chapter-nav-item">Enzymes</div>
+            <div class="chapter-nav-item">Photosynthesis</div>
+            <div class="chapter-nav-item">Respiration</div>
+            <div class="chapter-nav-item">Human Nutrition</div>
+        </div>
+
+        <!-- Chapter Card -->
+        <div class="chapter-card">
+            <div class="chapter-info">
+                <div class="info-item">
+                    <div class="info-label">Chapter</div>
+                    <div class="info-value">05</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Subject</div>
+                    <div class="info-value">Biology</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Grade</div>
+                    <div class="info-value">IGCSE</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Category</div>
+                    <div class="info-value">Core Concepts</div>
+                </div>
+            </div>
+            <div>
+                <span class="tag tag-biology">Biology</span>
+                <span class="tag tag-essential">Essential</span>
+                <span class="tag tag-exam">Exam Focus</span>
+            </div>
+        </div>
+
+        <!-- Chapter Title and Action Buttons -->
+        <div class="content-section">
+            <h1>Transport in Plants</h1>
+            <div class="action-buttons">
+                <button class="action-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Bookmark
+                </button>
+                <button class="action-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Take Notes
+                </button>
+                <button class="action-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Set Reminder
+                </button>
+                <button class="action-button-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 8l6 4-6 4V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Start Practice
+                </button>
+            </div>
+        </div>
+
+        <!-- Introduction Section -->
+        <div class="content-section">
+            <h2>Introduction to Plant Transport Systems</h2>
+            <p>Plants need transport systems to move substances to and from their cells. Unlike animals, plants do not have a circulatory system with a pump. Instead, they rely on physical processes to move water, minerals, and food throughout the plant body.</p>
+            
+            <div class="callout callout-info">
+                <div class="callout-title">
+                    <div class="callout-icon">i</div>
+                    Key Learning Objectives
+                </div>
+                <ul>
+                    <li>Understand the structure and function of xylem and phloem tissues</li>
+                    <li>Explain the processes of water uptake and movement in plants</li>
+                    <li>Describe the mechanism of translocation in phloem</li>
+                    <li>Connect transport processes to plant survival and growth</li>
+                </ul>
+            </div>
+            
+            <p>The two main transport tissues in plants are <strong>xylem</strong> and <strong>phloem</strong>. These specialized tissues form continuous systems that extend throughout the plant, connecting the roots, stem, and leaves.</p>
+        </div>
+
+        <!-- Xylem Structure and Function -->
+        <div class="content-section">
+            <h2>Xylem: Structure and Function</h2>
+            <p>Xylem is responsible for transporting water and dissolved mineral ions from the roots to the leaves. It consists of several specialized cell types that work together to efficiently move water upward against gravity.</p>
+            
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="card-icon">X</div>
+                    <div class="card-title">Xylem Cell Types</div>
+                </div>
+                <h3>Xylem Vessels</h3>
+                <p>Xylem vessels are formed from vessel elements that have died and lost their end walls, creating long, hollow tubes. The cell walls are reinforced with lignin, making them strong enough to withstand the negative pressure created during water transport.</p>
+                
+                <h3>Tracheids</h3>
+                <p>Tracheids are elongated cells with tapered ends and thickened, lignified cell walls. Water moves through pits (thin areas) in the cell walls from one tracheid to another.</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="/api/placeholder/600/400" alt="Cross-section of xylem tissue showing vessels and tracheids">
+                <div class="image-caption">Fig 1: Cross-section of xylem tissue showing vessels (large circular structures) and tracheids (smaller cells with thickened walls).</div>
+            </div>
+            
+            <h3>Functions of Xylem</h3>
+            <ul>
+                <li><strong>Water transport:</strong> Moves water from roots to leaves</li>
+                <li><strong>Mineral transport:</strong> Carries dissolved minerals to all parts of the plant</li>
+                <li><strong>Support:</strong> Lignified cell walls provide mechanical strength to the plant</li>
+            </ul>
+            
+            <div class="callout callout-important">
+                <div class="callout-title">
+                    <div class="callout-icon">!</div>
+                    Important Concept
+                </div>
+                <p>Xylem is a <strong>one-way transport system</strong> that moves substances <strong>upward</strong> from roots to leaves. The cells that form xylem vessels are <strong>dead</strong> at maturity, with only their cell walls remaining.</p>
+            </div>
+        </div>
+
+        <!-- Water Movement in Plants -->
+        <div class="content-section">
+            <h2>Water Movement in Plants</h2>
+            <p>Water moves through plants by several mechanisms working together. Understanding these processes is essential for explaining how tall trees can transport water to their uppermost leaves.</p>
+            
+            <h3>Osmosis and Root Pressure</h3>
+            <p>Water enters the plant roots by osmosis. The concentration of mineral ions is kept higher in root cells than in soil water, creating an osmotic gradient that draws water into the root.</p>
+            
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="card-icon">?</div>
+                    <div class="card-title">The Pathway of Water</div>
+                </div>
+                <p>Water moves from the soil into the root through either:</p>
+                <ul>
+                    <li><strong>Apoplast pathway:</strong> Water moves through cell walls and intercellular spaces</li>
+                    <li><strong>Symplast pathway:</strong> Water moves through the cytoplasm of cells, connected by plasmodesmata</li>
+                </ul>
+                <p>Once water reaches the endodermis, the Casparian strip forces water to move through the cytoplasm, allowing the plant to control which minerals enter the xylem.</p>
+            </div>
+            
+            <h3>Transpiration-Pull Theory</h3>
+            <p>The main mechanism driving water movement in tall plants is the transpiration-pull (also called the cohesion-tension theory). This process involves:</p>
+            
+            <ol>
+                <li><strong>Transpiration:</strong> Water evaporates from the leaves through stomata</li>
+                <li><strong>Cohesion:</strong> Water molecules stick together due to hydrogen bonding</li>
+                <li><strong>Adhesion:</strong> Water molecules stick to the walls of xylem vessels</li>
+                <li><strong>Tension:</strong> A continuous column of water is pulled upward as water evaporates from leaves</li>
+            </ol>
+            
+            <div class="image-container">
+                <img src="/api/placeholder/600/500" alt="Diagram showing the transpiration-pull mechanism">
+                <div class="image-caption">Fig 2: Diagram illustrating the transpiration-pull mechanism, showing how water moves from roots to leaves through the xylem.</div>
+            </div>
+            
+            <div class="callout callout-warning">
+                <div class="callout-title">
+                    <div class="callout-icon">?</div>
+                    Common Misconception
+                </div>
+                <p>Many students think plants "suck up" water like drinking through a straw. However, plants don't actively "pull" water—rather, it's the physical properties of water and the structure of xylem vessels that allow water to be drawn upward as it evaporates from leaves.</p>
+            </div>
+        </div>
+
+        <!-- Factors Affecting Transpiration -->
+        <div class="content-section">
+            <h2>Factors Affecting Transpiration</h2>
+            <p>The rate of transpiration varies depending on environmental conditions and plant factors. Understanding these factors helps explain plant adaptations to different environments.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Effect on Transpiration</th>
+                        <th>Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Light intensity</td>
+                        <td>Increases transpiration</td>
+                        <td>Stomata open in light for photosynthesis</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>Increases transpiration</td>
+                        <td>Higher temperatures increase evaporation rate</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>Decreases transpiration</td>
+                        <td>Less evaporation when air is already moisture-saturated</td>
+                    </tr>
+                    <tr>
+                        <td>Wind speed</td>
+                        <td>Increases transpiration</td>
+                        <td>Wind removes water vapor, maintaining concentration gradient</td>
+                    </tr>
+                    <tr>
+                        <td>Available water</td>
+                        <td>Increases transpiration</td>
+                        <td>More water uptake leads to more transpiration</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Plant Adaptations to Control Water Loss</h3>
+            <p>Plants have evolved various adaptations to regulate water loss through transpiration:</p>
+            <ul>
+                <li><strong>Stomatal control:</strong> Opening and closing stomata to regulate gas exchange and water loss</li>
+                <li><strong>Leaf surface area:</strong> Smaller or fewer leaves reduce the surface for transpiration</li>
+                <li><strong>Cuticle:</strong> Waxy layer that reduces water loss from the leaf surface</li>
+                <li><strong>Leaf hairs:</strong> Create a boundary layer of still air to reduce water loss</li>
+            </ul>
+        </div>
+
+        <!-- Phloem and Translocation -->
+        <div class="content-section">
+            <h2>Phloem and Translocation</h2>
+            <p>While xylem transports water and minerals upward, phloem is responsible for transporting organic nutrients (mainly sucrose) throughout the plant. This process is called translocation.</p>
+            
+            <div class="content-card">
+                <div class="content-card-header">
+                    <div class="card-icon">P</div>
+                    <div class="card-title">Phloem Structure</div>
+                </div>
+                <p>Phloem tissue consists of:</p>
+                <ul>
+                    <li><strong>Sieve tube elements:</strong> Living cells that form tubes for transport</li>
+                    <li><strong>Companion cells:</strong> Provide metabolic support to sieve tube elements</li>
+                    <li><strong>Phloem parenchyma:</strong> Storage cells</li>
+                    <li><strong>Phloem fibers:</strong> Provide structural support</li>
+                </ul>
+            </div>
+            
+            <div class="image-container">
+                <img src="/api/placeholder/600/400" alt="Structure of phloem tissue">
+                <div class="image-caption">Fig 3: Structure of phloem tissue showing sieve tube elements and companion cells.</div>
+            </div>
+            
+            <h3>Pressure Flow Hypothesis</h3>
+            <p>The mechanism of translocation in phloem is explained by the pressure flow hypothesis:</p>
+            
+            <ol>
+                <li><strong>Loading:</strong> Active transport of sucrose into phloem at source (where sugars are produced)</li>
+                <li><strong>Water follows:</strong> Water enters by osmosis, creating high hydrostatic pressure</li>
+                <li><strong>Mass flow:</strong> Solution flows from high pressure (source) to low pressure (sink)</li>
+                <li><strong>Unloading:</strong> Sucrose is removed at sink (where sugars are used/stored)</li>
+                <li><strong>Water exits:</strong> Water leaves by osmosis, maintaining the pressure gradient</li>
+            </ol>
+            
+            <div class="callout callout-info">
+                <div class="callout-title">
+                    <div class="callout-icon">i</div>
+                    Key Difference from Xylem
+                </div>
+                <p>Unlike xylem transport, which is unidirectional (roots to leaves), phloem transport is bidirectional. Organic compounds can be transported from leaves to roots, fruits, or growing points depending on the plant's needs.</p>
+            </div>
+        </div>
+
+        <!-- Flashcards Section -->
+        <div class="content-section">
+            <h2>Review Flashcards</h2>
+            <p>Test your understanding of key concepts with these flashcards.</p>
+            
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="toggleFlashcard(this)">
+                    <div class="flashcard-question">
+                        What is the main function of xylem tissue?
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flashcard-answer">
+                        Xylem transports water and dissolved mineral ions from the roots to the leaves. It also provides structural support to the plant due to its lignified cell walls.
+                    </div>
+                </div>
+                
+                <div class="flashcard" onclick="toggleFlashcard(this)">
+                    <div class="flashcard-question">
+                        Explain the transpiration-pull mechanism.
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flashcard-answer">
+                        The transpiration-pull mechanism (cohesion-tension theory) explains how water moves up through the xylem. As water evaporates from leaves (transpiration), it creates a tension that pulls the water column up. This works because water molecules cohere to each other (cohesion) and adhere to the xylem vessel walls (adhesion), creating a continuous water column from roots to leaves.
+                    </div>
+                </div>
+                
+                <div class="flashcard" onclick="toggleFlashcard(this)">
+                    <div class="flashcard-question">
+                        How does phloem transport differ from xylem transport?
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flashcard-answer">
+                        Key differences include:
+                        <ul>
+                            <li>Xylem transports water and minerals upward, while phloem transports organic nutrients (mainly sucrose) bidirectionally</li>
+                            <li>Xylem vessels are dead at maturity, while phloem sieve tubes are living cells</li>
+                            <li>Xylem transport is passive (driven by transpiration), while phloem transport requires energy (active loading of sucrose)</li>
+                            <li>Xylem uses negative pressure (tension), while phloem uses positive pressure differentials</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Quiz Section -->
+        <div class="content-section">
+            <h2>Check Your Understanding</h2>
+            <div class="quiz-container">
+                <div class="quiz-title">
+                    <div class="quiz-icon">Q</div>
+                    Quick Quiz
+                </div>
+                
+                <div class="quiz-question">
+                    <p>1. Which statement about xylem is correct?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">A</div>
+                            <div>Xylem cells are alive at maturity</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">B</div>
+                            <div>Xylem primarily transports sugars</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">C</div>
+                            <div>Xylem vessels have reinforced walls containing lignin</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">D</div>
+                            <div>Xylem transport requires energy from the plant</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>2. Which factor would decrease the rate of transpiration?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">A</div>
+                            <div>Increased light intensity</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">B</div>
+                            <div>Increased humidity</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">C</div>
+                            <div>Increased temperature</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">D</div>
+                            <div>Increased wind speed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p>3. In the pressure flow hypothesis, what causes the movement of sugars through phloem?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">A</div>
+                            <div>Transpiration pull</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">B</div>
+                            <div>Root pressure</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">C</div>
+                            <div>Pressure gradient between source and sink</div>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this)">
+                            <div class="option-marker">D</div>
+                            <div>Active transport throughout the phloem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <button class="nav-button prev-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Previous Chapter: Cell Structure
+            </button>
+            <button class="nav-button next-button">
+                Next Chapter: Enzymes
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-label">Progress</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="progress-percentage">65%</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">ed<strong>xtra</strong></div>
+                <p>Premium educational resources for students and teachers. Elevate your learning experience with our curated content and interactive study materials.</p>
+            </div>
+            <div>
+                <div class="footer-title">Resources</div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">IGCSE Courses</a>
+                    <a href="#" class="footer-link">A Levels</a>
+                    <a href="#" class="footer-link">Study Guides</a>
+                    <a href="#" class="footer-link">Practice Tests</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Support</div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">FAQ</a>
+                    <a href="#" class="footer-link">Feedback</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Company</div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Careers</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2025 Edxtra. All rights reserved.</div>
+            <div>Making quality education accessible worldwide</div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggling
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            
+            // Update theme icon
+            const themeIcon = document.querySelector('.theme-icon');
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.innerHTML = '<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+            } else {
+                themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+            }
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navItems = document.querySelector('.nav-items');
+            navItems.classList.toggle('mobile-active');
+        }
+        
+        // Flashcard toggle
+        function toggleFlashcard(flashcard) {
+            flashcard.classList.toggle('active');
+            
+            // Change the chevron direction
+            const chevron = flashcard.querySelector('svg');
+            if (flashcard.classList.contains('active')) {
+                chevron.innerHTML = '<path d="M19 15l-7-7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+            } else {
+                chevron.innerHTML = '<path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+            }
+        }
+        
+        // Quiz option selection
+        function selectOption(option) {
+            // First, remove the selected class from all options in the same question
+            const questionOptions = option.parentElement.querySelectorAll('.quiz-option');
+            questionOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Then add the selected class to the clicked option
+            option.classList.add('selected');
+        }
+    </script>
+</body>
+</html>
